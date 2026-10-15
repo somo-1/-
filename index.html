@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Something Special For You ❤️</title>
+
+    <!-- تحميل الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- شاشة البداية -->
+    <section class="start-screen" id="startScreen">
+
+        <div class="heart">♥</div>
+
+        <h1>Something Special</h1>
+
+        <p>Something special for you</p>
+
+        <button id="startButton" type="button">
+            START
+        </button>
+
+    </section>
+
+    <!-- شاشة الرسالة -->
+    <main class="movie-screen" id="movieScreen">
+
+        <div class="text-window">
+
+            <div class="moving-text" id="message">سَتَبْقِينَ طِفْلَتِي الَّتِي يُدَلِّلُهَا الْقَلْبُ، وَسَيِّدَةَ النِّسَاءِ الَّتِي يَنْحَنِي لِجَمَالِهَا الْحُبُّ.</div>
+
+        </div>
+
+        <!-- الرابط يظهر بعد انتهاء حركة الجملة -->
+        <div class="final-link" id="finalLink">
+
+            <a
+                href="https://vt.tiktok.com/ZSgdUmeNE/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                اِضْغَطِي هُنَا ♡
+            </a>
+
+        </div>
+
+        <div class="bottom-heart">♥</div>
+
+    </main>
+
+    <!-- تشغيل الحركة -->
+    <script>
+        const startButton = document.getElementById("startButton");
+        const startScreen = document.getElementById("startScreen");
+        const movieScreen = document.getElementById("movieScreen");
+        const message = document.getElementById("message");
+        const finalLink = document.getElementById("finalLink");
+
+        startButton.addEventListener("click", function () {
+
+            startScreen.classList.add("hide");
+            movieScreen.classList.add("show");
+
+            finalLink.classList.remove("show");
+            message.classList.remove("animate");
+
+            // إعادة تشغيل الحركة من البداية
+            void message.offsetWidth;
+
+            // ننتظر تحميل الخط قبل تشغيل الحركة
+            setTimeout(function () {
+
+                document.fonts.ready.then(function () {
+                    message.classList.add("animate");
+                });
+
+            }, 300);
+
+        });
+
+        // إظهار الرابط بعد اكتمال الحركة
+        message.addEventListener("animationend", function (event) {
+
+            if (event.animationName === "textFlow") {
+                finalLink.classList.add("show");
+            }
+
+        });
+    </script>
+
+</body>
+</html>
